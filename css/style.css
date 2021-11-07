@@ -1,0 +1,30 @@
+header{
+	display: in-block;
+	color: white;
+
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+body{
+	border: 5px soild;
+	border-color: FFFFFF;
+	border-width: 9x;
+	font-family: "ff-meta-web-pro", sans-serif;
+    font-size: 100%;
+	line-height: 26px;
+	background: #1277fbdc;
+	color: #ffffff;
+	text-decoration:none;
+
+
+	
+}
+
+
+footer{
+	display: in-block;
+	color: white;
+	padding: 14px 16px;
+	text-decoration: none;
+}
