@@ -7,31 +7,37 @@ function handleResponse(data) {
     const books = json.works
     books.forEach(book => {
         checkbook(book)
+
     });
     
-  
+
 }
+
+
 
 //grabs parsed data from book and displays data in the console.
 function checkbook(book){
     const title = book.title;
-    //create divelement with the tag of div
-    const divElement = document.createElement('div');
+    //create new table colume  with the tag of div
+    const tablecell = document.createElement('tr');
     const content = document.createTextNode(title)
-    const pTag = document.createElement('p')
     // apend the value of divelemnt to the body of html document
-    pTag.appendChild(content)
-    divElement.appendChild(pTag)
-    document.body.appendChild(divElement)
+    tablecell.appendChild(content)
+    document.getElementById("Title").appendChild(tablecell);  
     console.log(book)
-    const authors = book.authors  
-    authors.forEach(author => {
-        checkAuthor(author)
-    });
+    
+    const BookEdition = book.edition_count
+    const tablecellA = document.createElement('tr');
+    const contentA = document.createTextNode(BookEdition)  
+    tablecellA.appendChild(contentA)
+    document.getElementById("bookEdition").appendChild(tablecellA);  
 }
 
 
 function checkAuthor(author){
+    
+
+
     console.log(author.name)
 }
 
