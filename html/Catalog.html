@@ -1,57 +1,57 @@
-  
 <!DOCTYPE html>
-<html lang = "en-GB">
-	<head>
-		<title>Catalog</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1.0">
-		<link rel="stylesheet" href="/css/style.css">	
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	</head>
-	
-		<body>
-	
+<html lang="en-GB">
+
+<head>
+	<title>Catalog</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="/js/Books.js"></script>
+	<script src="/js/navFunction.js"></script>
+	<script src="/js/search.js"></script>
+</head>
+
+<body>
+
 	<a href="#maincontent">Skip to main content</a>
 	<a href="#skiptofooter">Skip to footer</a>
 	<a id="skiptohome"></a>
 
-    <a  href="index.html"><img id="logo" src="/res/LibernalLibaratorsLogoS.png" alt="Homepage logo"></a>
+	<a href="index.html"><img id="logo" src="/res/LibernalLibaratorsLogoS.png" alt="Homepage logo"></a>
 
 
 	<header>
 
-    <div class="topnav" id="myTopnav">
-        <a href="index.html">Homepage</a>
-        <a href="Catalog.html">Catalog</a>
-        <a href="about_us.html">About us </a>
-        <a href="Contact_us.html">Contact us </a>
-        <a href="FAQ.html">FAQ </a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i></a>
-    </div>    
-    <script src="/js/navFunction.js"></script>
+		<div class="topnav" id="myTopnav">
+			<a href="index.html">Homepage</a>
+			<a href="Catalog.html">Catalog</a>
+			<a href="aboutUs.html">About us </a>
+			<a href="Contact_us.html">Contact us </a>
+			<a href="FAQ.html">FAQ </a>
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+				<i class="fa fa-bars"></i></a>
+		</div>
+		
 	</header>
 
-    <script src="/js/Books.js"></script>
-	
-	
-	<input type="text" id="search" onkeyup="search()" placeholder="Search for products">
-	
-	
+	<input type="text" id="search" onkeyup="search()" placeholder="Search for Titles">
 
 
-	<table id= "stock">
+	<table id="stock">
 		<tr>
-		<th>Title</th>
-		<th>Book Edition</th>
-		<th>Cover ID</th>
-		<th>Author</th>		
-	</tr>
+			<th>Title</th>
+			<th>Book Edition</th>
+			<th>Cover ID</th>
+			<th>Author</th>
+			<th>Favorites</th>
+		</tr>
 		<tr>
-		<td id="Title"></td>
-		<td id="bookEdition"></td>
-		<td id="coverId"></td>
-		<td id="author"></td>
+			<td id="Title"></td>
+			<td id="bookEdition"></td>
+			<td id="coverId"></td>
+			<td id="author"></td>
+			<td id="favorite"></td>
 		</tr>
 	</table>
 
@@ -62,7 +62,7 @@
 		<p> For any querys regarding the avabillity of stock please contact us via our contact page</p>
 		<a href="#skiptohome">Skip to home</a>
 		<a href="#maincontent">Skip to main content</a>
-	</footer>	
-	</body>
+	</footer>
+</body>
 
 </html>
