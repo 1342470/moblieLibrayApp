@@ -31,6 +31,12 @@ function checkbook(book){
     const contentA = document.createTextNode(BookEdition)  
     tablecellA.appendChild(contentA)
     document.getElementById("bookEdition").appendChild(tablecellA);  
+    
+    const coverId = book.cover_id
+    const tablecellB = document.createElement('tr');
+    const contentB = document.createTextNode(coverId)  
+    tablecellB.appendChild(contentB)
+    document.getElementById("coverId").appendChild(tablecellB);  
 }
 
 
