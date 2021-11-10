@@ -63,6 +63,17 @@ h1 {
   width: 15%;
 }
 
+table{
+  table-layout: auto;
+  width: auto;
+  
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
 .topnav {
   margin: 1px;
   padding: 1px;
@@ -125,7 +136,6 @@ footer {
     text-align: left;
   }
   table {
-
     width: 100%;
 
   }
