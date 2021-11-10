@@ -12,10 +12,10 @@
 		<body>
 	
 	<a href="#maincontent">Skip to main content</a>
-	<a href="#skiptofooter" id="skiptofooter">Skip to footer</a>
+	<a href="#skiptofooter">Skip to footer</a>
 	<a id="skiptohome"></a>
 
-    <a  href="index.html"><img id="logo" src="/res/Libernal libarators LogoS.png" alt="Homepage logo"></a>
+    <a  href="index.html"><img id="logo" src="/res/LibernalLibaratorsLogoS.png" alt="Homepage logo"></a>
 
 
 	<header>
@@ -29,20 +29,29 @@
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i></a>
     </div>    
-    <script type="text/javascript" src="/js/navFunction.js"></script>
+    <script src="/js/navFunction.js"></script>
 	</header>
 
     <script src="/js/Books.js"></script>
+	
+	
+	<input type="text" id="search" onkeyup="search()" placeholder="Search for products">
+	
+	
+
 
 	<table id= "stock">
 		<tr>
 		<th>Title</th>
 		<th>Book Edition</th>
-		<th>Year published</th>
+		<th>Cover ID</th>
+		<th>Author</th>		
 	</tr>
 		<tr>
 		<td id="Title"></td>
 		<td id="bookEdition"></td>
+		<td id="coverId"></td>
+		<td id="author"></td>
 		</tr>
 	</table>
 

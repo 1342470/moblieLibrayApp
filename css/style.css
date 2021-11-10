@@ -126,4 +126,16 @@ footer {
     display: block;
     text-align: left;
   }
+
+  table{
+    border-collapse: collapse;
+    border-spacing: 100;
+    width: 100%;
+    overflow-x:auto;
+    vertical-align: bottom;
+
+
+
+  }
+
 }
