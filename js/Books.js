@@ -37,6 +37,14 @@ function checkbook(book){
     const contentB = document.createTextNode(coverId)  
     tablecellB.appendChild(contentB)
     document.getElementById("coverId").appendChild(tablecellB);  
+
+    const author = Object.values(book.authors);
+    const tablecellC = document.createElement('tr');
+    const contentC = document.createTextNode(author)  
+    tablecellC.appendChild(contentC)
+    document.getElementById("author").appendChild(tablecellC);
+    
+    
 }
 
 
