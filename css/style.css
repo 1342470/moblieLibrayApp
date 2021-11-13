@@ -66,6 +66,7 @@ h1 {
 table{
   table-layout: auto;
   width: auto;
+  overflow-x:auto;
   
 }
 
@@ -104,6 +105,35 @@ footer {
   margin:0 15px 0 0;
   
 }
+
+#fictionElement{
+  width: 10%;
+  height: 10%;
+
+
+}
+
+#fictionImg{
+  width: 300%;
+  height: 100%;
+
+}
+
+#search{
+  float: right;
+}
+
+#programmingElement{
+  width: 10%;
+  height: 10%;
+
+}
+
+#programmingImg{
+  width: 300%;
+  height: 100%;
+}
+
 
 @media screen and (max-width: 653px) and (min-height:400px) {
   .topnav a:not(:first-child) {
