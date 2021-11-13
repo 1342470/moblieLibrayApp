@@ -7,9 +7,11 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="/js/Books.js"></script>
+	
 	<script src="/js/navFunction.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/js/search.js"></script>
+	<script src="/js/FilterTableJ.js"></script>
 </head>
 
 <body>
@@ -34,16 +36,33 @@
 		</div>
 		
 	</header>
+	<h1>Catalog</h1>
+	<input type="text" id="search" placeholder="Search for Titles"> 
+	
+	<h2>Subjects</h2>
 
-	<input type="text" id="search" onkeyup="search()" placeholder="Search for Titles">
+	<div id= "fictionElement" class="container">
+		<img id="fictionImg" src="/res/2_LIB_Gladstones_Library_JPEG_2500.jpg" alt="Fiction subject image">
+		<div class="welcomeText">
+			<h4>Fiction</h4>
+		</div>
+	</div>
 
-	<div style="overflow-x:auto;">
+	<div id= "programmingElement" class="container">
+		<img id="programmingImg" src="/res/media-file-code-900x500.png" alt="Programming subject image">
+		<div class="welcomeText">
+			<h4>Programming</h4>
+		</div>
+	</div>
+
+	<script src="/js/Books.js"></script>
 	<table id="stock">
 		<tr>
 			<th>Title</th>
 			<th>Book Edition</th>
 			<th>Cover ID</th>
 			<th>Author</th>
+			<th>First publish year</th>
 			<th>Favorites</th>
 		</tr>
 		<tr>
@@ -51,10 +70,11 @@
 			<td id="bookEdition"></td>
 			<td id="coverId"></td>
 			<td id="author"></td>
+			<td id="FirstPublishYear"></td>
 			<td id="favorite"></td>
 		</tr>
 	</table>
-	</div>
+
 
 	<a id="skiptofooter"></a>
 	<footer>
