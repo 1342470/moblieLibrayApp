@@ -10,7 +10,6 @@
 	
 	<script src="/js/navFunction.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="/js/search.js"></script>
 	<script src="/js/FilterTableJ.js"></script>
 </head>
 
@@ -41,6 +40,7 @@
 	
 	<h2>Subjects</h2>
 
+	
 	<div id= "fictionElement" class="container">
 		<img id="fictionImg" src="/res/2_LIB_Gladstones_Library_JPEG_2500.jpg" alt="Fiction subject image">
 		<div class="welcomeText">
@@ -55,6 +55,13 @@
 		</div>
 	</div>
 
+	<div id= "horrorElement" class="container">
+		<img id="horrorImg" src="/res/Cackling-Skull.png" alt="horror subject image">
+		<div class="welcomeText">
+			<h4>Horror</h4>
+		</div>
+	</div>
+
 	<script src="/js/Books.js"></script>
 	<table id="stock">
 		<tr>
@@ -62,7 +69,8 @@
 			<th>Book Edition</th>
 			<th>Cover ID</th>
 			<th>Author</th>
-			<th>First publish year</th>
+			<th>Availabililty</th>
+			<th>Readable</th>
 			<th>Favorites</th>
 		</tr>
 		<tr>
@@ -70,7 +78,8 @@
 			<td id="bookEdition"></td>
 			<td id="coverId"></td>
 			<td id="author"></td>
-			<td id="FirstPublishYear"></td>
+			<td id="availabililty"></td>
+			<td id="readable"></td>
 			<td id="favorite"></td>
 		</tr>
 	</table>
