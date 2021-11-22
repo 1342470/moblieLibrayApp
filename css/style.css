@@ -4,6 +4,7 @@ header {
 
 body {
   font-size: 100%;
+  display: inline-block;
   line-height: 26px;
   background-color: #ffffffa6;
   background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
@@ -67,6 +68,9 @@ table{
   table-layout: auto;
   width: auto;
   overflow-x:auto;
+  display: inline-table;
+
+
   
 }
 
@@ -160,7 +164,7 @@ footer {
   .welcomeText {
     position: absolute;
     bottom: 0px;
-    right: 0px;
+    right: auto;
     color: rgb(255, 255, 255);
   }
   .topnav.responsive {
@@ -178,16 +182,68 @@ footer {
   }
   table {
     width: 100%;
-
+    display: inline-block;
   }
+
+  body {
+    font-size: 100%;
+    display: block;
+    line-height: 26px;
+    background-color: #ffffffa6;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+  }
+
   th, td {
     text-align: left;
     padding: 8px;
+    white-space: nowrap;
   }
 
   .aboutusimage{
     width: 50%;
     height: 50%;
   }
+
+  #fictionElement{
+    width: 25%;
+    height: 10%;
+  
+  
+  }
+  
+  #fictionImg{
+    width: 300%;
+    height: 100%;
+  
+  }
+  
+  #search{
+    display: inline;
+    padding-left: 2%;
+    padding-bottom: 2%;
+  }
+  
+  #programmingElement{
+    width: 25%;
+    height: 10%;
+  
+  }
+  
+  #programmingImg{
+    width: 300%;
+    height: 100%;
+  }
+  
+  #horrorElement{
+    width: 15%;
+    height: 10%;
+  
+  }
+  
+  #horrorImg{
+    width: 300%;
+    height: 100%;
+  }
+  
 
 }

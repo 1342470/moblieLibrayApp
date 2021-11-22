@@ -19,11 +19,26 @@ function handleResponse(data) {
 
 }
 
-//function stopRequest(ajax){
-//    var a;
-//    a.abort();
-//    a =  $.ajax();
-//}
+function stopProRequest() {
+    var request = null;
+    $('#programmingElement')(function () {
+        var id = $(this).val();
+        request = $.ajax({
+            type: "POST",
+            data: { 'id': id },
+            success: function () {
+
+            },
+            beforeSend: function () {
+                if (request !== null) {
+                    request.abort();
+                }
+            }
+        });
+    });
+
+}
+
 
 //grabs parsed data from book and displays data in the console.
 function checkbook(book) {
@@ -81,25 +96,46 @@ function checkAuthor(author) {
 
 function checkStatus(status) {
     const viewableUnknown = "N/a";
-    const Availability = status.available_to_borrow;
-    if (typeof (Availability) == 'undefined') {
-        const tableNewStatusRow = document.createElement('tr');
-        const tablecellStatus = document.createElement('td');
-        const contentStatus = document.createTextNode(viewableUnknown);
-        tablecellStatus.appendChild(contentStatus);
-        document.getElementById("availabililty").appendChild(tablecellStatus);
-        document.getElementById("availabililty").appendChild(tableNewStatusRow);
-    } else {
+    // will try and get the values for availablity from the books and insert like previous collums
+    try {
+        const Availability = status.available_to_borrow;
         const tableNewStatusRow = document.createElement('tr');
         const tablecellStatus = document.createElement('td');
         const contentStatus = document.createTextNode(Availability);
         tablecellStatus.appendChild(contentStatus);
         document.getElementById("availabililty").appendChild(tablecellStatus);
         document.getElementById("availabililty").appendChild(tableNewStatusRow);
+        
+    }
+    // if a book doesn't have a value set the value to viewableUnknown, next set the value of undefined to the newly assined value of availbe to borrow so the script can still output the rest of the results
+    catch (available_to_borrow_undefined) {
+        if (available_to_borrow_undefined == undefined) {
+            status.available_to_borrow = viewableUnknown;
+            undefined = status.available_to_borrow;
+            const tableNewStatusRow = document.createElement('tr');
+            const tablecellStatus = document.createElement('td');
+            const contentStatus = document.createTextNode(viewableUnknown);
+            tablecellStatus.appendChild(contentStatus);
+            document.getElementById("availabililty").appendChild(tablecellStatus);
+            document.getElementById("availabililty").appendChild(tableNewStatusRow);
+        }
+    }
 
-
+    try {
+    // will try and get the values for readable from the books and insert like previous collums
         const viewable = status.is_readable;
-        if (typeof (viewable) == 'undefined') {
+        const viewableRow = document.createElement('tr');
+        const viewableStatus = document.createElement('td');
+        const contentViewable = document.createTextNode(viewable);
+        viewableStatus.appendChild(contentViewable);
+        document.getElementById("readable").appendChild(viewableStatus);
+        document.getElementById("readable").appendChild(viewableRow);
+    }
+    // if a book doesn't have a value set the value to viewableUnknown, next set the value of undefined to the newly assined value of availbe to borrow so the script can still output the rest of the results
+    catch (is_readable_undefined) {
+        if (is_readable_undefined == undefined) {
+            status.is_readable = viewableUnknown;
+            undefined = status.is_readable;
             const viewableRow = document.createElement('tr');
             const viewableStatus = document.createElement('td');
             const contentViewable = document.createTextNode(viewableUnknown);
@@ -107,63 +143,58 @@ function checkStatus(status) {
             document.getElementById("readable").appendChild(viewableStatus);
             document.getElementById("readable").appendChild(viewableRow);
         }
-
-        const viewableRow = document.createElement('tr');
-        const viewableStatus = document.createElement('td');
-        const contentViewable = document.createTextNode(viewable);
-        viewableStatus.appendChild(contentViewable);
-        document.getElementById("readable").appendChild(viewableStatus);
-        document.getElementById("readable").appendChild(viewableRow);
+    }
 
 
 
 
+
+}
+
+
+function getProgramming() {
+    //stopRequest(ajax("https://openlibrary.org/subjects/fiction.json"));
+    const tableNewRowE = document.createElement('tr');
+    document.getElementById("author").appendChild(tableNewRowE);
+    ajax("https://openlibrary.org/subjects/programming.json", handleResponse);
+
+
+
+}
+
+function getFiction() {
+    //stopRequest(ajax("https://openlibrary.org/subjects/fiction.json"));
+    const tableNewRowE = document.createElement('tr');
+    document.getElementById("author").appendChild(tableNewRowE);
+    //request data to ajax
+    ajax("https://openlibrary.org/subjects/fiction.json", handleResponse);
+
+
+}
+
+function getHorror() {
+    //stopRequest(ajax("https://openlibrary.org/subjects/fiction.json"));
+    const tableNewRowE = document.createElement('tr');
+    document.getElementById("author").appendChild(tableNewRowE);
+    //request data to ajax
+    ajax("https://openlibrary.org/subjects/horror.json", handleResponse);
+
+
+}
+
+
+
+function ajax(url, callback) {
+    //create a new ajax request
+    const xhr = new XMLHttpRequest();
+    // open a specific ul passed
+    xhr.open("GET", url);
+    // after state changes
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4 && xhr.status === 200) {
+            callback(xhr.response);
         }
     }
-
-    function getProgramming() {
-        //stopRequest(ajax("https://openlibrary.org/subjects/fiction.json"));
-        const tableNewRowE = document.createElement('tr');
-        document.getElementById("author").appendChild(tableNewRowE);
-        ajax("https://openlibrary.org/subjects/programming.json", handleResponse);
-
-
-
-    }
-
-    function getFiction() {
-        //stopRequest(ajax("https://openlibrary.org/subjects/fiction.json"));
-        const tableNewRowE = document.createElement('tr');
-        document.getElementById("author").appendChild(tableNewRowE);
-        //request data to ajax
-        ajax("https://openlibrary.org/subjects/fiction.json", handleResponse);
-
-
-    }
-
-    function getHorror() {
-        //stopRequest(ajax("https://openlibrary.org/subjects/fiction.json"));
-        const tableNewRowE = document.createElement('tr');
-        document.getElementById("author").appendChild(tableNewRowE);
-        //request data to ajax
-        ajax("https://openlibrary.org/subjects/horror.json", handleResponse);
-
-
-    }
-
-    
-
-    function ajax(url, callback) {
-        //create a new ajax request
-        const xhr = new XMLHttpRequest();
-        // open a specific ul passed
-        xhr.open("GET", url);
-        // after state changes
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState == 4 && xhr.status === 200) {
-                callback(xhr.response);
-            }
-        }
-        xhr.send();
-    }
+    xhr.send();
+}
 
