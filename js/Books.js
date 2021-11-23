@@ -3,7 +3,17 @@
 document.getElementById("programmingElement").addEventListener("click", getProgramming);
 document.getElementById("fictionElement").addEventListener("click", getFiction);
 document.getElementById("horrorElement").addEventListener("click", getHorror);
+document.getElementById("newAjexSearchSubmit").addEventListener("click", getSearchValue);
 
+
+
+
+
+function getSearchValue() {
+    var input = document.getElementById("newAjexSearch").value;
+    console.log(input);
+    searchURL(input);
+}
 
 src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
 
@@ -18,6 +28,125 @@ function handleResponse(data) {
 
 
 }
+
+
+function handleResponse(search) {
+    const json = JSON.parse(search);
+    const restult = json.docs;
+    restult.forEach(restult => {
+        serachbook(restult)
+
+    });
+
+
+}
+
+function serachbook(restult) {
+    const title = restult.title;
+    //create new table colume  with the tag of div
+
+    const titleTableNewRow = document.createElement('tr');
+    const tablecell = document.createElement('td');
+    const content = document.createTextNode(title);
+    // apend the value of divelemnt to the body of html document
+    tablecell.appendChild(content);
+    document.getElementById("Title").appendChild(tablecell);
+    document.getElementById("Title").appendChild(titleTableNewRow);
+
+    const BookEdition = restult.edition_count;
+    const tableNewRow = document.createElement('tr');
+    const tablecellA = document.createElement('td');
+    const contentA = document.createTextNode(BookEdition);
+    tablecellA.appendChild(contentA);
+    document.getElementById("bookEdition").appendChild(tablecellA);
+    document.getElementById("bookEdition").appendChild(tableNewRow);
+
+
+    const coverId = restult.cover_id;
+    const tableNewRowB = document.createElement('tr');
+    const tablecellB = document.createElement('td');
+    const contentB = document.createTextNode(coverId);
+    tablecellB.appendChild(contentB);
+    document.getElementById("coverId").appendChild(tablecellB);
+    document.getElementById("coverId").appendChild(tableNewRowB);
+    const authors = restult.author_name;
+    console.log(authors);
+    authors.forEach(authors => {
+        checkAuthorSearch(authors)
+
+    });
+
+    const status = restult.availability;
+    checkStatusSearch(status);
+}
+
+function checkAuthorSearch(author) {
+    const name = author;
+    const tableNewRowD = document.createElement('tr');
+    const tablecellC = document.createElement('td');
+    const contentC = document.createTextNode(name);
+    tablecellC.appendChild(contentC);
+    document.getElementById("author").appendChild(tablecellC);
+    document.getElementById("author").appendChild(tableNewRowD);
+}
+
+function checkStatusSearch(status) {
+    const viewableUnknown = "N/a";
+    // will try and get the values for availablity from the books and insert like previous collums
+    try {
+        const Availability = status.available_to_borrow;
+        const tableNewStatusRow = document.createElement('tr');
+        const tablecellStatus = document.createElement('td');
+        const contentStatus = document.createTextNode(Availability);
+        tablecellStatus.appendChild(contentStatus);
+        document.getElementById("availabililty").appendChild(tablecellStatus);
+        document.getElementById("availabililty").appendChild(tableNewStatusRow);
+
+    }
+    // if a book doesn't have a value set the value to viewableUnknown, next set the value of undefined to the newly assined value of availbe to borrow so the script can still output the rest of the results
+    catch (available_to_borrow_undefined) {
+        if (available_to_borrow_undefined == undefined) {
+            status.available_to_borrow = viewableUnknown;
+            undefined = status.available_to_borrow;
+            const tableNewStatusRow = document.createElement('tr');
+            const tablecellStatus = document.createElement('td');
+            const contentStatus = document.createTextNode(viewableUnknown);
+            tablecellStatus.appendChild(contentStatus);
+            document.getElementById("availabililty").appendChild(tablecellStatus);
+            document.getElementById("availabililty").appendChild(tableNewStatusRow);
+        }
+    }
+
+    try {
+        // will try and get the values for readable from the books and insert like previous collums
+        const viewable = status.is_readable;
+        const viewableRow = document.createElement('tr');
+        const viewableStatus = document.createElement('td');
+        const contentViewable = document.createTextNode(viewable);
+        viewableStatus.appendChild(contentViewable);
+        document.getElementById("readable").appendChild(viewableStatus);
+        document.getElementById("readable").appendChild(viewableRow);
+    }
+    // if a book doesn't have a value set the value to viewableUnknown, next set the value of undefined to the newly assined value of availbe to borrow so the script can still output the rest of the results
+    catch (is_readable_undefined) {
+        if (is_readable_undefined == undefined) {
+            status.is_readable = viewableUnknown;
+            undefined = status.is_readable;
+            const viewableRow = document.createElement('tr');
+            const viewableStatus = document.createElement('td');
+            const contentViewable = document.createTextNode(viewableUnknown);
+            viewableStatus.appendChild(contentViewable);
+            document.getElementById("readable").appendChild(viewableStatus);
+            document.getElementById("readable").appendChild(viewableRow);
+        }
+    }
+
+
+
+
+
+}
+
 
 function stopProRequest() {
     var request = null;
@@ -105,7 +234,7 @@ function checkStatus(status) {
         tablecellStatus.appendChild(contentStatus);
         document.getElementById("availabililty").appendChild(tablecellStatus);
         document.getElementById("availabililty").appendChild(tableNewStatusRow);
-        
+
     }
     // if a book doesn't have a value set the value to viewableUnknown, next set the value of undefined to the newly assined value of availbe to borrow so the script can still output the rest of the results
     catch (available_to_borrow_undefined) {
@@ -122,7 +251,7 @@ function checkStatus(status) {
     }
 
     try {
-    // will try and get the values for readable from the books and insert like previous collums
+        // will try and get the values for readable from the books and insert like previous collums
         const viewable = status.is_readable;
         const viewableRow = document.createElement('tr');
         const viewableStatus = document.createElement('td');
@@ -181,6 +310,20 @@ function getHorror() {
 
 
 }
+
+function searchURL(input) {
+    //check if search is empty
+    if (input != undefined) {
+        // if search has text inside grab text and combind it with the openlibary search 
+        var newURL ="http://openlibrary.org/search.json?title=" + input;
+        console.log(newURL);
+        ajax(newURL, handleResponse);
+    } else {
+        return
+    }
+}
+
+
 
 
 
