@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
+
 	<script src="/js/navFunction.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/js/FilterTableJ.js"></script>
@@ -33,34 +33,38 @@
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i></a>
 		</div>
-		
+
 	</header>
 	<h1>Catalog</h1>
-	<input type="text" id="search" placeholder="Search for Titles"> 
-	
+
+
 	<h2>Subjects</h2>
 
-	
-	<div id= "fictionElement" class="container">
+		<input type="text" id="newAjexSearch" placeholder="Search for Titles"><br><br>
+		<input type="submit" id="newAjexSearchSubmit" value="Submit">
+
+	<div id="fictionElement" class="container">
 		<img id="fictionImg" src="/res/2_LIB_Gladstones_Library_JPEG_2500.jpg" alt="Fiction subject image">
 		<div class="welcomeText">
 			<h4>Fiction</h4>
 		</div>
 	</div>
 
-	<div id= "programmingElement" class="container">
+	<div id="programmingElement" class="container">
 		<img id="programmingImg" src="/res/media-file-code-900x500.png" alt="Programming subject image">
 		<div class="welcomeText">
 			<h4>Programming</h4>
 		</div>
 	</div>
 
-	<div id= "horrorElement" class="container">
+	<div id="horrorElement" class="container">
 		<img id="horrorImg" src="/res/Cackling-Skull.png" alt="horror subject image">
 		<div class="welcomeText">
 			<h4>Horror</h4>
 		</div>
 	</div>
+
+	<input type="text" id="search" placeholder="filter table for Titles">
 
 	<script src="/js/Books.js"></script>
 	<table id="stock">
