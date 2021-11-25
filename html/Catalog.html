@@ -16,6 +16,8 @@
 <body>
 
 	<a href="#maincontent">Skip to main content</a>
+	<a href="#subjectsSkip">Skip to Subjects</a>
+	<a href="#SearchBarSkip">Skip to Search</a>
 	<a href="#skiptofooter">Skip to footer</a>
 	<a id="skiptohome"></a>
 
@@ -37,12 +39,20 @@
 	</header>
 	<h1>Catalog</h1>
 
+	<a id="maincontent"></a>
+
+	<p>Welcome to our Catalog within this page is our proud collection of books for you to browse, To search for a specific title please use the search bar below. We also have a variety of books within various subjects,
+	in order to see book from a specified subject please select one of the options below. Once you selection has been made please wait while we gather your results,
+	once we have found your results please check the table to find your selection. To filter any results please use the filter bar next to the table.
+	If you would like to refresh the table use the refresh button next to the filter search bar.</p>
 
 	<h2>Subjects</h2>
 
-		<input type="text" id="newAjexSearch" placeholder="Search for Titles"><br><br>
-		<input type="submit" id="newAjexSearchSubmit" value="Submit">
+	<label for="newAjexSearch" id="altText">Search for titles</label>
+	<input type="text" id="newAjexSearch" placeholder="Search for Titles"><br><br>
+	<input type="submit" id="newAjexSearchSubmit" value="Submit">
 
+	<a id="skiptohome"></a>
 	<div id="fictionElement" class="container">
 		<img id="fictionImg" src="/res/2_LIB_Gladstones_Library_JPEG_2500.jpg" alt="Fiction subject image">
 		<div class="welcomeText">
@@ -64,6 +74,10 @@
 		</div>
 	</div>
 
+	<div class="refreshtip">
+		<button type="button" id="refreshbutton"><img id="refresh" src="/res/32x32.png" alt="refresh button"></button>
+		<span class="tooltiptext"><a>click to refresh table</a></span>
+	</div>
 	<input type="text" id="search" placeholder="filter table for Titles">
 
 	<script src="/js/Books.js"></script>
@@ -96,6 +110,7 @@
 		<a href="#skiptohome">Skip to home</a>
 		<a href="#maincontent">Skip to main content</a>
 	</footer>
+	<script src="/js/refresh.js"></script>
 </body>
 
 </html>
