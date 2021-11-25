@@ -339,6 +339,7 @@ function ajax(url, callback) {
             callback(xhr.response);
         }
     }
+    //send request
     xhr.send();
 }
 
