@@ -128,6 +128,8 @@ footer {
   float: right;
 }
 
+
+
 #newAjexSearch{
   float: right;
 }
@@ -157,6 +159,43 @@ footer {
   width: 300%;
   height: 100%;
 }
+
+#refreshbutton{
+  height: 50px;
+  width: 50px;
+  float: right;
+
+}
+
+.refreshtip {
+  position: relative;
+  float: right;
+}
+
+#altText{
+  visibility: hidden;
+}
+
+.refreshtip .tooltiptext {
+  visibility: hidden;
+  width: 77px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+.refreshtip:hover .tooltiptext {
+  visibility: visible;
+  width: 120px;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
 
 @media screen and (max-width: 653px) and (min-height:400px) {
   .topnav a:not(:first-child) {

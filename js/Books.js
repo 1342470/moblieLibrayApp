@@ -30,7 +30,7 @@ function handleResponse(data) {
 }
 
 
-function handleResponse(search) {
+function handleResponseSearch(search) {
     const json = JSON.parse(search);
     const restult = json.docs;
     restult.forEach(restult => {
@@ -53,6 +53,7 @@ function serachbook(restult) {
     document.getElementById("Title").appendChild(tablecell);
     document.getElementById("Title").appendChild(titleTableNewRow);
 
+
     const BookEdition = restult.edition_count;
     const tableNewRow = document.createElement('tr');
     const tablecellA = document.createElement('td');
@@ -62,7 +63,7 @@ function serachbook(restult) {
     document.getElementById("bookEdition").appendChild(tableNewRow);
 
 
-    const coverId = restult.cover_id;
+    const coverId = restult.edition_key[0];
     const tableNewRowB = document.createElement('tr');
     const tablecellB = document.createElement('td');
     const contentB = document.createTextNode(coverId);
@@ -317,7 +318,7 @@ function searchURL(input) {
         // if search has text inside grab text and combind it with the openlibary search 
         var newURL ="http://openlibrary.org/search.json?title=" + input;
         console.log(newURL);
-        ajax(newURL, handleResponse);
+        ajax(newURL, handleResponseSearch);
     } else {
         return
     }
@@ -338,6 +339,7 @@ function ajax(url, callback) {
             callback(xhr.response);
         }
     }
+    //send request
     xhr.send();
 }
 
