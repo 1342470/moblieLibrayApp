@@ -2,7 +2,7 @@
 <html lang="en-GB">
 
 <head>
-	<title>Libernal libarators Catalog</title>
+	<title>Libernal libarators favorite</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="stylesheet" href="/css/style.css">
@@ -11,13 +11,12 @@
 	<script src="/js/navFunction.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/js/FilterTableJ.js"></script>
+    <script src="/js/favs.js"></script>
 </head>
 
 <body>
 	<a id="skiptohome"></a>
 	<a href="#maincontent">Skip to main content</a>
-	<a href="#subjectsSkip">Skip to Subjects</a>
-	<a href="#SearchBarSkip">Skip to Search</a>
 	<a href="#skiptofooter">Skip to footer</a>
 	<a id="skiptohome"></a>
 
@@ -35,54 +34,23 @@
 		</div>
 
 	</header>
-	<h1>Catalog</h1>
+	<h1>Favorites</h1>
 
 	<a id="maincontent"></a>
 
-	<p>Welcome to our Catalog within this page is our proud collection of books for you to browse, To search for a specific title please use the search bar below. We also have a variety of books within various subjects,
-	in order to see book from a specified subject please select one of the options below. Once you selection has been made please wait while we gather your results,
-	once we have found your results please check the table to find your selection. To filter any results please use the filter bar next to the table.
-	If you would like to refresh the table use the refresh button next to the filter search bar.</p>
+	<p>Welcome to your favorates you will find all of your favorited book within this page to get started check the table below.To filter any results please use the filter bar next to the table.
+		If you would like to refresh the table use the refresh button next to the filter search bar.</p>
 
-	<h2>Subjects</h2>
-	<a id="subjectsSkip"></a>
-	<label for="newAjexSearch" id="altText">Search for titles</label>
-	<input type="text" id="newAjexSearch" placeholder="Search for Titles"><br><br>
-	<input type="submit" id="newAjexSearchSubmit" value="Submit">
 
 	
-	<div id="fictionElement" class="container">
-		<img id="fictionImg" src="/res/2_LIB_Gladstones_Library_JPEG_2500.jpg" alt="Fiction subject image">
-		<div class="welcomeText">
-			<h4>Fiction</h4>
-		</div>
-	</div>
-
-	<div id="programmingElement" class="container">
-		<img id="programmingImg" src="/res/media-file-code-900x500.png" alt="Programming subject image">
-		<div class="welcomeText">
-			<h4>Programming</h4>
-		</div>
-	</div>
-
-	<div id="horrorElement" class="container">
-		<img id="horrorImg" src="/res/Cackling-Skull.png" alt="horror subject image">
-		<div class="welcomeText">
-			<h4>Horror</h4>
-		</div>
-	</div>
 
 	<div class="refreshtip">
 		<button type="button" id="refreshbutton"><img id="refresh" src="/res/32x32.png" alt="refresh button"></button>
 		<span class="tooltiptext"><a>click to refresh table</a></span>
 	</div>
 	<input type="text" id="search" placeholder="filter table for Titles">
-
-	<script src="/js/Books.js"></script>
 	
-	<div id="loader" class="lds-dual-ring hidden overlay"></div>
-
-	<table id="stock">
+	<table id="favorites">
 		<tr>
 			<th>Title</th>
 			<th>Book Edition</th>
@@ -102,6 +70,7 @@
 			<td id="favorite"></td>
 		</tr>
 	</table>
+
 
 	<a id="skiptofooter"></a>
 	<footer>

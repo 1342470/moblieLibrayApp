@@ -4,14 +4,14 @@ document.getElementById("programmingElement").addEventListener("click", getProgr
 document.getElementById("fictionElement").addEventListener("click", getFiction);
 document.getElementById("horrorElement").addEventListener("click", getHorror);
 document.getElementById("newAjexSearchSubmit").addEventListener("click", getSearchValue);
+//document.getElementsByClassName("favCheck").addEventListener("checked", getRow(this));
 
 
 
 
-
+//grab string from the input value from catalog html and pass that onto the searchurl funciton
 function getSearchValue() {
     var input = document.getElementById("newAjexSearch").value;
-    console.log(input);
     searchURL(input);
 }
 
@@ -29,7 +29,7 @@ function handleResponse(data) {
 
 }
 
-
+//alt handler for any search requests
 function handleResponseSearch(search) {
     const json = JSON.parse(search);
     const restult = json.docs;
@@ -70,18 +70,21 @@ function serachbook(restult) {
     tablecellB.appendChild(contentB);
     document.getElementById("coverId").appendChild(tablecellB);
     document.getElementById("coverId").appendChild(tableNewRowB);
+    const status = restult.availability;
+    checkStatusSearch(status);
     const authors = restult.author_name;
     console.log(authors);
+ 
     authors.forEach(authors => {
         checkAuthorSearch(authors)
 
     });
 
-    const status = restult.availability;
-    checkStatusSearch(status);
+    
 }
 
 function checkAuthorSearch(author) {
+    const viewableUnknown ="N/A";
     const name = author;
     const tableNewRowD = document.createElement('tr');
     const tablecellC = document.createElement('td');
@@ -142,32 +145,28 @@ function checkStatusSearch(status) {
         }
     }
 
-
-
-
-
 }
 
+//function to stop ajax
+// function stopProRequest() {
+//     var request = null;
+//     $('#programmingElement')(function () {
+//         var id = $(this).val();
+//         request = $.ajax({
+//             type: "POST",
+//             data: { 'id': id },
+//             success: function () {
 
-function stopProRequest() {
-    var request = null;
-    $('#programmingElement')(function () {
-        var id = $(this).val();
-        request = $.ajax({
-            type: "POST",
-            data: { 'id': id },
-            success: function () {
+//             },
+//             beforeSend: function () {
+//                 if (request !== null) {
+//                     request.abort();
+//                 }
+//             }
+//         });
+//     });
 
-            },
-            beforeSend: function () {
-                if (request !== null) {
-                    request.abort();
-                }
-            }
-        });
-    });
-
-}
+// }
 
 
 //grabs parsed data from book and displays data in the console.
@@ -219,7 +218,7 @@ function checkAuthor(author) {
     tablecellC.appendChild(contentC);
     document.getElementById("author").appendChild(tablecellC);
     document.getElementById("author").appendChild(tableNewRowD);
-
+    addChecks();
 
 
 }
@@ -281,6 +280,47 @@ function checkStatus(status) {
 
 }
 
+//adds checkmarks to each of the inserted books that will be used to favorite books.
+function addChecks() {
+    const checkRow = document.createElement('tr');
+    const checkCell = document.createElement('td');
+    //create input that will be used to create checkbox
+    var checkbox = document.createElement('input');
+    //create label for input for accessabiltiy
+    var label = document.createElement('label');
+    //set attritutes to the input
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('value', 'yes');
+    checkbox.setAttribute('class', 'favCheck');
+    //set label to checkbox
+    label.setAttribute('for', 'favCheck');
+    label.appendChild(document.createTextNode('Favorite?'));
+    //append to table
+    checkCell.appendChild(checkbox);
+    document.getElementById("favorite").appendChild(checkRow);
+    document.getElementById("favorite").appendChild(checkCell);
+}
+
+
+
+
+
+// function getRow(row) {
+//         var currentRow = row.rowIndex;
+//         console.log(currentRow);''
+//         getTitle(currentRow);
+
+//       }
+
+// function getTitle(index){
+//     var title=index.find("td:eq(index)").text();
+//     addFav(title)
+// }
+
+// function addFav(title){
+//     String(title);
+//     localStorage.setItem('Favorite', title)
+// }
 
 function getProgramming() {
     //stopRequest(ajax("https://openlibrary.org/subjects/fiction.json"));
@@ -316,7 +356,7 @@ function searchURL(input) {
     //check if search is empty
     if (input != undefined) {
         // if search has text inside grab text and combind it with the openlibary search 
-        var newURL ="http://openlibrary.org/search.json?title=" + input;
+        var newURL = "http://openlibrary.org/search.json?title=" + input;
         console.log(newURL);
         ajax(newURL, handleResponseSearch);
     } else {
@@ -332,11 +372,26 @@ function ajax(url, callback) {
     //create a new ajax request
     const xhr = new XMLHttpRequest();
     // open a specific ul passed
-    xhr.open("GET", url);
+    xhr.open("GET", url);        
+    //before the request is sent off while the loading remove the class hidden from the div element with teh id of loader to show the loading icon                         
+        $.ajax({
+            beforeSend: function() {
+            $('#loader').removeClass('hidden')
+            }, 
+        });    
+
     // after state changes
     xhr.onreadystatechange = () => {
+        //if successfull pass the xmlhttp restuest to the callback function to handle ajax response.
         if (xhr.readyState == 4 && xhr.status === 200) {
+        //when ajax function as finished reteving data set the loader class to hidden to remove the loading icon    
+            $.ajax({
+                complete: function () {
+                    $('#loader').addClass('hidden')
+                }, 
+            });    
             callback(xhr.response);
+
         }
     }
     //send request
