@@ -27,6 +27,7 @@ h1 {
   position: relative;
 }
 
+/* text to go over the container class which hovers over images such as the homepage and subjects*/
 .welcomeText {
   position: absolute;
   bottom: 20px;
@@ -45,6 +46,7 @@ h1 {
   border-right: none;
 }
 
+/*all links inside the topnav class will be aliigned into the center and display as black with no text decoration to get rid of an underlining*/
 .topnav a {
   display: in-block;
   color: rgb(0, 0, 0);
@@ -53,6 +55,7 @@ h1 {
   text-decoration: none;
 }
 
+/*change background of the links when hovering over a link */
 .topnav a:hover:not(.active) {
   background-color: rgba(245, 149, 24, 0.555);
 }
@@ -80,6 +83,7 @@ th, td {
   
 }
 
+/*used to style to div navation bar */
 .topnav {
   margin: 1px;
   padding: 1px;
@@ -197,6 +201,51 @@ footer {
 }
 
 
+/*Hidden class for adding and removing*/
+.lds-dual-ring.hidden {
+  display: none;
+}
+
+/*Add an overlay to the entire page blocking any further presses to buttons or other elements.*/
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,.8);
+  z-index: 999;
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+/*Spinner Styles*/
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 5% auto;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+/*moblie*/
 @media screen and (max-width: 653px) and (min-height:400px) {
   .topnav a:not(:first-child) {
     display: none;
@@ -238,6 +287,7 @@ footer {
     line-height: 26px;
     background-color: #ffffffa6;
     background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    margin: auto;
   }
 
   th, td {
