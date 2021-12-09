@@ -1,5 +1,7 @@
 src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
 
+getFaves();
+
 //handler that will take the data from the ajax request and log the data from the api to the console.
 function handleResponse(data) {
     const json = JSON.parse(data);
@@ -11,6 +13,17 @@ function handleResponse(data) {
 
 
 }
+
+
+// function getFaves(){
+    
+//     localStorage.getItem(getTitle.attr('title'));
+    
+//     localStorage.forEach(tit => {
+//         checkAuthorSearch(authors)
+
+//     });
+// }
 
 function serachbook(restult) {
     const title = restult.title;
@@ -175,62 +188,6 @@ function checkAuthor(author) {
 
 }
 
-function checkStatus(status) {
-    const viewableUnknown = "N/a";
-    // will try and get the values for availablity from the books and insert like previous collums
-    try {
-        const Availability = status.available_to_borrow;
-        const tableNewStatusRow = document.createElement('tr');
-        const tablecellStatus = document.createElement('td');
-        const contentStatus = document.createTextNode(Availability);
-        tablecellStatus.appendChild(contentStatus);
-        document.getElementById("availabililty").appendChild(tablecellStatus);
-        document.getElementById("availabililty").appendChild(tableNewStatusRow);
-
-    }
-    // if a book doesn't have a value set the value to viewableUnknown, next set the value of undefined to the newly assined value of availbe to borrow so the script can still output the rest of the results
-    catch (available_to_borrow_undefined) {
-        if (available_to_borrow_undefined == undefined) {
-            status.available_to_borrow = viewableUnknown;
-            undefined = status.available_to_borrow;
-            const tableNewStatusRow = document.createElement('tr');
-            const tablecellStatus = document.createElement('td');
-            const contentStatus = document.createTextNode(viewableUnknown);
-            tablecellStatus.appendChild(contentStatus);
-            document.getElementById("availabililty").appendChild(tablecellStatus);
-            document.getElementById("availabililty").appendChild(tableNewStatusRow);
-        }
-    }
-
-    try {
-        // will try and get the values for readable from the books and insert like previous collums
-        const viewable = status.is_readable;
-        const viewableRow = document.createElement('tr');
-        const viewableStatus = document.createElement('td');
-        const contentViewable = document.createTextNode(viewable);
-        viewableStatus.appendChild(contentViewable);
-        document.getElementById("readable").appendChild(viewableStatus);
-        document.getElementById("readable").appendChild(viewableRow);
-    }
-    // if a book doesn't have a value set the value to viewableUnknown, next set the value of undefined to the newly assined value of availbe to borrow so the script can still output the rest of the results
-    catch (is_readable_undefined) {
-        if (is_readable_undefined == undefined) {
-            status.is_readable = viewableUnknown;
-            undefined = status.is_readable;
-            const viewableRow = document.createElement('tr');
-            const viewableStatus = document.createElement('td');
-            const contentViewable = document.createTextNode(viewableUnknown);
-            viewableStatus.appendChild(contentViewable);
-            document.getElementById("readable").appendChild(viewableStatus);
-            document.getElementById("readable").appendChild(viewableRow);
-        }
-    }
-
-
-
-
-
-}
 
 //adds checkmarks to each of the inserted books that will be used to favorite books.
 function addChecks() {
