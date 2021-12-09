@@ -4,9 +4,19 @@ document.getElementById("programmingElement").addEventListener("click", getProgr
 document.getElementById("fictionElement").addEventListener("click", getFiction);
 document.getElementById("horrorElement").addEventListener("click", getHorror);
 document.getElementById("newAjexSearchSubmit").addEventListener("click", getSearchValue);
-//document.getElementsByClassName("favCheck").addEventListener("checked", getRow(this));
+//document.getElementsByClassName("favCheck").addEventListener("checked", addFav);
+
+//allow user to add a book to local storage to access again in favs section.
+function addFav() {
+    $("favCheck").checked(function () {
+        //get title from element tr with the class of booktitles
+        var getTitle = $(this).closest('tr').find('.bookTitles');
+        //get the key for title to the name of the title found in jquery
+        localStorage.setItem(getTitle.attr('title'), getTitle.val());
+    });
 
 
+}
 
 
 //grab string from the input value from catalog html and pass that onto the searchurl funciton
@@ -74,17 +84,17 @@ function serachbook(restult) {
     checkStatusSearch(status);
     const authors = restult.author_name;
     console.log(authors);
- 
+
     authors.forEach(authors => {
         checkAuthorSearch(authors)
 
     });
 
-    
+
 }
 
 function checkAuthorSearch(author) {
-    const viewableUnknown ="N/A";
+    const viewableUnknown = "N/A";
     const name = author;
     const tableNewRowD = document.createElement('tr');
     const tablecellC = document.createElement('td');
@@ -92,6 +102,8 @@ function checkAuthorSearch(author) {
     tablecellC.appendChild(contentC);
     document.getElementById("author").appendChild(tablecellC);
     document.getElementById("author").appendChild(tableNewRowD);
+    addChecks();
+    
 }
 
 function checkStatusSearch(status) {
@@ -147,26 +159,6 @@ function checkStatusSearch(status) {
 
 }
 
-//function to stop ajax
-// function stopProRequest() {
-//     var request = null;
-//     $('#programmingElement')(function () {
-//         var id = $(this).val();
-//         request = $.ajax({
-//             type: "POST",
-//             data: { 'id': id },
-//             success: function () {
-
-//             },
-//             beforeSend: function () {
-//                 if (request !== null) {
-//                     request.abort();
-//                 }
-//             }
-//         });
-//     });
-
-// }
 
 
 //grabs parsed data from book and displays data in the console.
@@ -302,28 +294,7 @@ function addChecks() {
 }
 
 
-
-
-
-// function getRow(row) {
-//         var currentRow = row.rowIndex;
-//         console.log(currentRow);''
-//         getTitle(currentRow);
-
-//       }
-
-// function getTitle(index){
-//     var title=index.find("td:eq(index)").text();
-//     addFav(title)
-// }
-
-// function addFav(title){
-//     String(title);
-//     localStorage.setItem('Favorite', title)
-// }
-
 function getProgramming() {
-    //stopRequest(ajax("https://openlibrary.org/subjects/fiction.json"));
     const tableNewRowE = document.createElement('tr');
     document.getElementById("author").appendChild(tableNewRowE);
     ajax("https://openlibrary.org/subjects/programming.json", handleResponse);
@@ -333,7 +304,6 @@ function getProgramming() {
 }
 
 function getFiction() {
-    //stopRequest(ajax("https://openlibrary.org/subjects/fiction.json"));
     const tableNewRowE = document.createElement('tr');
     document.getElementById("author").appendChild(tableNewRowE);
     //request data to ajax
@@ -343,7 +313,6 @@ function getFiction() {
 }
 
 function getHorror() {
-    //stopRequest(ajax("https://openlibrary.org/subjects/fiction.json"));
     const tableNewRowE = document.createElement('tr');
     document.getElementById("author").appendChild(tableNewRowE);
     //request data to ajax
@@ -372,24 +341,24 @@ function ajax(url, callback) {
     //create a new ajax request
     const xhr = new XMLHttpRequest();
     // open a specific ul passed
-    xhr.open("GET", url);        
+    xhr.open("GET", url);
     //before the request is sent off while the loading remove the class hidden from the div element with teh id of loader to show the loading icon                         
-        $.ajax({
-            beforeSend: function() {
+    $.ajax({
+        beforeSend: function () {
             $('#loader').removeClass('hidden')
-            }, 
-        });    
+        },
+    });
 
     // after state changes
     xhr.onreadystatechange = () => {
         //if successfull pass the xmlhttp restuest to the callback function to handle ajax response.
         if (xhr.readyState == 4 && xhr.status === 200) {
-        //when ajax function as finished reteving data set the loader class to hidden to remove the loading icon    
+            //when ajax function as finished reteving data set the loader class to hidden to remove the loading icon    
             $.ajax({
                 complete: function () {
                     $('#loader').addClass('hidden')
-                }, 
-            });    
+                },
+            });
             callback(xhr.response);
 
         }

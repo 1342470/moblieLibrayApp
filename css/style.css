@@ -48,7 +48,7 @@ h1 {
 
 /*all links inside the topnav class will be aliigned into the center and display as black with no text decoration to get rid of an underlining*/
 .topnav a {
-  display: in-block;
+  display: inline-block;
   color: rgb(0, 0, 0);
   text-align: center;
   padding: 14px 16px;
