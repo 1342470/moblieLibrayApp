@@ -7,18 +7,14 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<script src="/js/navFunction.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="/js/FilterTableJ.js"></script>
 </head>
 
 <body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<a id="skiptohome"></a>
 	<a href="#maincontent">Skip to main content</a>
-	<a href="#subjectsSkip">Skip to Subjects</a>
-	<a href="#SearchBarSkip">Skip to Search</a>
-	<a href="#skiptofooter">Skip to footer</a>
+
+
 
 	<a href="index.html"><img id="logo" src="/res/LibernalLibaratorsLogoS.png" alt="Homepage logo"></a>
 
@@ -44,40 +40,39 @@
 	If you would like to refresh the table use the refresh button next to the filter search bar.</p>
 
 	<h2>Subjects</h2>
-	<a id="subjectsSkip"></a>
 	<label for="newAjexSearch" id="altText">Search for titles</label>
 	<input type="text" id="newAjexSearch" placeholder="Search for Titles"><br><br>
 	<input type="submit" id="newAjexSearchSubmit" value="Submit">
 
 	
-	<div id="fictionElement" class="container">
-		<img id="fictionImg" src="/res/2_LIB_Gladstones_Library_JPEG_2500.jpg" alt="Fiction subject image">
+	<div id="fictionElement" role="button" class="container">
+		<input type="image" id="fictionImg" src="/res/2_LIB_Gladstones_Library_JPEG_2500.jpg" alt="Fiction subject image search">
 		<div class="welcomeText">
-			<h4>Fiction</h4>
+			<h3>Fiction</h3>
 		</div>
 	</div>
 
 	<div id="programmingElement" class="container">
-		<img id="programmingImg" src="/res/media-file-code-900x500.png" alt="Programming subject image">
+		<input type="image" id="programmingImg" src="/res/media-file-code-900x500.png" alt="Programming subject image">
 		<div class="welcomeText">
-			<h4>Programming</h4>
+			<h3>Programming</h3>
 		</div>
 	</div>
 
-	<div id="horrorElement" class="container">
-		<img id="horrorImg" src="/res/Cackling-Skull.png" alt="horror subject image">
+	<div id="horrorElement" role="button" class="container">
+		<input type="image"  id="horrorImg" src="/res/Cackling-Skull.png" alt="horror subject image">
 		<div class="welcomeText">
-			<h4>Horror</h4>
+			<h3>Horror</h3>
 		</div>
 	</div>
 
-	<div class="refreshtip">
+	<div class="refreshtip" role="button">
 		<button type="button" id="refreshbutton"><img id="refresh" src="/res/32x32.png" alt="refresh button"></button>
-		<span class="tooltiptext"><a>click to refresh table</a></span>
+		<span class="tooltiptext"><a id = "tiptext">click to refresh table</a></span>
 	</div>
 	<input type="text" id="search" placeholder="filter table for Titles">
 
-	<script src="/js/Books.js"></script>
+	
 	
 	<div id="loader" class="lds-dual-ring hidden overlay"></div>
 
@@ -89,6 +84,7 @@
 			<th>Author</th>
 			<th>Availabililty</th>
 			<th>Readable</th>
+			<th>Cover</th>
 			<th>Favorites</th>
 		</tr>
 		<tr>
@@ -98,11 +94,12 @@
 			<td id="author"></td>
 			<td id="availabililty"></td>
 			<td id="readable"></td>
+			<td id="Image"></td>
 			<td id="favorite"></td>
 		</tr>
 	</table>
 
-	<a id="skiptofooter"></a>
+
 	<footer>
 		<p> All copyright is held by there respective owners</p>
 		<p> For any querys regarding the avabillity of stock please contact us via our contact page</p>
@@ -110,6 +107,9 @@
 		<a href="#maincontent">Skip to main content</a>
 	</footer>
 	<script src="/js/refresh.js"></script>
+	<script src="/js/Books.js"></script>
+	<script src="/js/navFunction.js"></script>
+	<script src="/js/FilterTableJ.js"></script>
 </body>
 
 </html>

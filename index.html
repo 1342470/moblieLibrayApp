@@ -7,36 +7,31 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<script src="/js/navFunction.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="/js/FilterTableJ.js"></script>
 </head>
 
 <body>
 	<a id="skiptohome"></a>
 	<a href="#maincontent">Skip to main content</a>
-	<a href="#skiptofooter">Skip to footer</a>
 	<a href="index.html"><img id="logo" src="/res/LibernalLibaratorsLogoS.png" alt="Homepage logo"></a>
 
 
 	<header>
 
-		<div class="topnav" id="myTopnav">
+		<div class="topnav" role="navigation" aria-label="navigation bar" id="myTopnav">
 			<a href="index.html">Homepage</a>
 			<a href="Catalog.html">Catalog</a>
 			<a href="favorates.html">Favorites</a>
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-				<i class="fa fa-bars"></i></a>
+			<i class="fa fa-bars"></i></a>
 		</div>
 
 	</header>
 	<h1>Homepage</h1>
 
-	<div class="container">
+	<div class="container" role="region" aria-label="welcomeMessage" >
 		<img src="/res/2_LIB_Gladstones_Library_JPEG_2500.jpg" alt="Image of libray" style="width:100%;">
-		<div class="welcomeText">
-			<h4>Welcome</h4>
+		<div class="welcomeText" >
+			<h2>Welcome</h2>
 			<a id="maincontent"></a>
 			<p>Welcome to Libernal libarators please feel free to navigate though the site via the navigation bar or use
 				this shortcut <a href="Catalog.html">here</a> get find your next read. </p>
@@ -45,14 +40,14 @@
 
 
 
-	<script src="/js/navFunction.js"></script>
+	
 
-	<h1>About us</h1>
+	<h2>About us</h2>
 
 	<img src="/res/old-books-arranged-on-shelf-royalty-free-image-1572384534.jpg" width="200" height="200"
 		alt="About us image with workers in backgroud" class="aboutusimage" id="aboutusimage1">
 
-	<p class="aboutUsText"> Welcome to Libernal libarators, we are the one stop in all your reading needs. Select from
+	<p class="aboutUsText" role="main" aria-label="mainContent"> Welcome to Libernal libarators, we are the one stop in all your reading needs. Select from
 		hundrads of books in our deep libary of books. not sure what to look for check out our subjects section within
 		our <a href="Catalog.html">catalog</a>
 		to get a taste of the books we offer in our collection. We have been providing books to our customers since 2021
@@ -92,7 +87,7 @@
 
 	<h3>Contact us</h3>
 
-		<form>
+		<form aria-label="Contact us">
 
 			<label for="fname">First Name</label>
 			<input type="text" id="fname" placeholder="Given name">
@@ -113,13 +108,15 @@
 
 		</form>
 
-		<a id="skiptofooter"></a>
 		<footer>
 			<p> All copyright is held by there respective owners</p>
 			<p> For any querys regarding the avabillity of stock please contact us via our contact page</p>
 			<a href="#skiptohome">Skip to home</a>
 			<a href="#maincontent">Skip to main content</a>
 		</footer>
+	<script src="/js/navFunction.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/js/FilterTableJ.js"></script>
 </body>
 
 </html>
