@@ -103,7 +103,7 @@ function checkAuthorSearch(author) {
     document.getElementById("author").appendChild(tablecellC);
     document.getElementById("author").appendChild(tableNewRowD);
     addChecks();
-    
+
 }
 
 function checkStatusSearch(status) {
@@ -164,6 +164,8 @@ function checkStatusSearch(status) {
 //grabs parsed data from book and displays data in the console.
 function checkbook(book) {
     const title = book.title;
+
+
     //create new table colume  with the tag of div
 
     const titleTableNewRow = document.createElement('tr');
@@ -191,11 +193,17 @@ function checkbook(book) {
     tablecellB.appendChild(contentB);
     document.getElementById("coverId").appendChild(tablecellB);
     document.getElementById("coverId").appendChild(tableNewRowB);
+
+
     const authors = book.authors;
     authors.forEach(authors => {
-        checkAuthor(authors)
+        checkAuthor(authors);
 
     });
+
+    const cover = book.cover_id;
+    getCovers(cover)
+
 
     const status = book.availability;
     checkStatus(status);
@@ -210,9 +218,24 @@ function checkAuthor(author) {
     tablecellC.appendChild(contentC);
     document.getElementById("author").appendChild(tablecellC);
     document.getElementById("author").appendChild(tableNewRowD);
+
     addChecks();
 
 
+}
+
+function getCovers(key) {
+    const coverUrl = "https://covers.openlibrary.org/b/id/" + key;
+    const final = coverUrl + "-S.jpg"
+
+    const coverRow = document.createElement('tr');
+    const coverCell = document.createElement('td');
+    const content = document.createElement('img');
+    content.src = final;
+    // apend the value of divelemnt to the body of html document
+    coverCell.appendChild(content);
+    document.getElementById("Image").appendChild(coverCell);
+    document.getElementById("Image").appendChild(coverRow);
 }
 
 function checkStatus(status) {
@@ -271,6 +294,7 @@ function checkStatus(status) {
 
 
 }
+
 
 //adds checkmarks to each of the inserted books that will be used to favorite books.
 function addChecks() {
