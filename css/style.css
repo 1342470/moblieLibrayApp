@@ -145,6 +145,10 @@ footer {
 
 }
 
+#tableLable{
+  visibility: hidden;
+}
+
 #programmingImg{
   width: 300%;
   height: 100%;
@@ -277,6 +281,8 @@ footer {
     width: 100%;
     display: inline-block;
   }
+
+  
 
   body {
     font-size: 100%;
