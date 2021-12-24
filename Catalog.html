@@ -25,10 +25,12 @@
 			<a href="index.html">Homepage</a>
 			<a href="Catalog.html">Catalog</a>
             <a href="favorates.html">Favorites</a>
-			<a href="javascript:void(0);" class="icon" onclick="myFunction()">Menu <i class="fa fa-bars"></i></a>
+			<a id = "dropDownMenu" class="icon">Menu <i class="fa fa-bars"></i></a>
 		</div>
 
 	</header>
+
+	<section>
 	<h1>Catalog</h1>
 
 	<a id="maincontent"></a>
@@ -37,7 +39,9 @@
 	in order to see book from a specified subject please select one of the options below. Once you selection has been made please wait while we gather your results,
 	once we have found your results please check the table to find your selection. To filter any results please use the filter bar next to the table.
 	If you would like to refresh the table use the refresh button next to the filter search bar.</p>
+	</section>
 
+	<section>
 	<h2>Subjects</h2>
 	<label for="newAjexSearch" id="altText">Search for titles</label>
 	<input type="text" id="newAjexSearch" placeholder="Search for Titles"><br><br>
@@ -65,6 +69,8 @@
 		</div>
 	</div>
 
+	</section>
+
 	<div class="refreshtip" role="button">
 		<button type="button" id="refreshbutton"><img id="refresh" src="/res/32x32.png" alt="refresh button"></button>
 		<span class="tooltiptext"><a id = "tiptext">click to refresh table</a></span>
@@ -76,29 +82,38 @@
 	
 	<div id="loader" class="lds-dual-ring hidden overlay"></div>
 
-	<table id="stock">
-		<tr>
+	<div role="main" >
+		<table id="stock">
+		<tr id="Title">
 			<th>Title</th>
+		</tr>
+		
+		<tr id="bookEdition">
 			<th>Book Edition</th>
+		</tr>
+
+		<tr id="coverId">
 			<th>Cover ID</th>
+		</tr>
+		
+		<tr id="author">
 			<th>Author</th>
+		</tr>
+		
+		<tr id="cover">
 			<th>Cover</th>
+		</tr>
+		<tr id="readable">
 			<th>Readable</th>
+		</tr>
+		<tr id ="availabililty">
 			<th>Availabililty</th>
+		</tr>
+		<tr id ="favorites">
 			<th>Favorites</th>
 		</tr>
-		<tr>
-			<td class="bookTitles" id="Title"></td>
-			<td id="bookEdition"></td>
-			<td id="coverId"></td>
-			<td id="author"></td>
-			<td id="availabililty"></td>
-			<td id="readable"></td>
-			<td id="Image"></td>
-			<td id="favorite"></td>
-		</tr>
-	</table>
-
+		</table>
+	</div>
 
 	<footer>
 		<p> All copyright is held by there respective owners</p>

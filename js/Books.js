@@ -55,54 +55,69 @@ function serachbook(restult) {
     const title = restult.title;
     //create new table colume  with the tag of div
 
-    const titleTableNewRow = document.createElement('tr');
+
     const tablecell = document.createElement('td');
     const content = document.createTextNode(title);
     // apend the value of divelemnt to the body of html document
     tablecell.appendChild(content);
     document.getElementById("Title").appendChild(tablecell);
-    document.getElementById("Title").appendChild(titleTableNewRow);
+
 
 
     const BookEdition = restult.edition_count;
-    const tableNewRow = document.createElement('tr');
     const tablecellA = document.createElement('td');
     const contentA = document.createTextNode(BookEdition);
     tablecellA.appendChild(contentA);
     document.getElementById("bookEdition").appendChild(tablecellA);
-    document.getElementById("bookEdition").appendChild(tableNewRow);
+
 
 
     const coverId = restult.edition_key[0];
-    const tableNewRowB = document.createElement('tr');
+
     const tablecellB = document.createElement('td');
     const contentB = document.createTextNode(coverId);
     tablecellB.appendChild(contentB);
     document.getElementById("coverId").appendChild(tablecellB);
-    document.getElementById("coverId").appendChild(tableNewRowB);
     const status = restult.availability;
     checkStatusSearch(status);
     const authors = restult.author_name;
     console.log(authors);
 
-    authors.forEach(authors => {
-        checkAuthorSearch(authors)
+    const cover = restult.cover_id;
+    console.log(cover);
+    getCovers(cover);
 
-    });
+    checkAuthorSearch(authors);
+    // authors.forEach(authors => {
+        
+
+    // });
 
 
 }
 
 function checkAuthorSearch(author) {
+    //in event that a serach has no author have a placeholder text
     const viewableUnknown = "N/A";
     const name = author;
-    const tableNewRowD = document.createElement('tr');
     const tablecellC = document.createElement('td');
     const contentC = document.createTextNode(name);
     tablecellC.appendChild(contentC);
     document.getElementById("author").appendChild(tablecellC);
-    document.getElementById("author").appendChild(tableNewRowD);
+
     addChecks();
+
+}
+
+function getSearchCovers(key) {
+    const coverUrl = "https://covers.openlibrary.org/b/id/" + key;
+    const final = coverUrl + "-M.jpg"
+    const coverCell = document.createElement('td');
+    const content = document.createElement('img');
+    content.src = final;
+    // apend the value of divelemnt to the body of html document
+    coverCell.appendChild(content);
+    document.getElementById("cover").appendChild(coverCell);
 
 }
 
@@ -111,12 +126,11 @@ function checkStatusSearch(status) {
     // will try and get the values for availablity from the books and insert like previous collums
     try {
         const Availability = status.available_to_borrow;
-        const tableNewStatusRow = document.createElement('tr');
         const tablecellStatus = document.createElement('td');
         const contentStatus = document.createTextNode(Availability);
         tablecellStatus.appendChild(contentStatus);
         document.getElementById("availabililty").appendChild(tablecellStatus);
-        document.getElementById("availabililty").appendChild(tableNewStatusRow);
+
 
     }
     // if a book doesn't have a value set the value to viewableUnknown, next set the value of undefined to the newly assined value of availbe to borrow so the script can still output the rest of the results
@@ -124,36 +138,33 @@ function checkStatusSearch(status) {
         if (available_to_borrow_undefined == undefined) {
             status.available_to_borrow = viewableUnknown;
             undefined = status.available_to_borrow;
-            const tableNewStatusRow = document.createElement('tr');
             const tablecellStatus = document.createElement('td');
             const contentStatus = document.createTextNode(viewableUnknown);
             tablecellStatus.appendChild(contentStatus);
             document.getElementById("availabililty").appendChild(tablecellStatus);
-            document.getElementById("availabililty").appendChild(tableNewStatusRow);
+
         }
     }
 
     try {
         // will try and get the values for readable from the books and insert like previous collums
         const viewable = status.is_readable;
-        const viewableRow = document.createElement('tr');
         const viewableStatus = document.createElement('td');
         const contentViewable = document.createTextNode(viewable);
         viewableStatus.appendChild(contentViewable);
         document.getElementById("readable").appendChild(viewableStatus);
-        document.getElementById("readable").appendChild(viewableRow);
+
     }
     // if a book doesn't have a value set the value to viewableUnknown, next set the value of undefined to the newly assined value of availbe to borrow so the script can still output the rest of the results
     catch (is_readable_undefined) {
         if (is_readable_undefined == undefined) {
             status.is_readable = viewableUnknown;
             undefined = status.is_readable;
-            const viewableRow = document.createElement('tr');
             const viewableStatus = document.createElement('td');
             const contentViewable = document.createTextNode(viewableUnknown);
             viewableStatus.appendChild(contentViewable);
             document.getElementById("readable").appendChild(viewableStatus);
-            document.getElementById("readable").appendChild(viewableRow);
+
         }
     }
 
@@ -165,14 +176,12 @@ function checkStatusSearch(status) {
 function checkbook(book) {
     const title = book.title;
 
-
-    //create new table colume  with the tag of div
-    const titleTableNewRow = document.createElement('tr');
+    //create new table colume  with the tag of td
     const tablecell = document.createElement('td');
     const content = document.createTextNode(title);
     // apend the value of divelemnt to the body of html document
     tablecell.appendChild(content);
-    titleTableNewRow.appendChild(tablecell);
+    document.getElementById("Title").appendChild(tablecell);
 
     console.log(book);
 
@@ -181,55 +190,56 @@ function checkbook(book) {
     const tablecellA = document.createElement('td');
     const contentA = document.createTextNode(BookEdition);
     tablecellA.appendChild(contentA);
-    titleTableNewRow.appendChild(tablecellA);
+    document.getElementById("bookEdition").appendChild(tablecellA);
 
 
     const coverId = book.cover_id;
     const tablecellB = document.createElement('td');
     const contentB = document.createTextNode(coverId);
     tablecellB.appendChild(contentB);
-    titleTableNewRow.appendChild(tablecellB);
+    document.getElementById("coverId").appendChild(tablecellB);
 
 
 
     const authors = book.authors;
     authors.forEach(authors => {
-        checkAuthor(authors,titleTableNewRow);
+        checkAuthor(authors);
 
     });
 
     const cover = book.cover_id;
-    getCovers(cover,titleTableNewRow)
+    getCovers(cover)
 
 
     const status = book.availability;
-    checkStatus(status,titleTableNewRow);
+    checkStatus(status);
 }
 
 
-function checkAuthor(author,row) {
+function checkAuthor(author) {
     const name = author.name;
 
     const tablecellC = document.createElement('td');
     const contentC = document.createTextNode(name);
     tablecellC.appendChild(contentC);
-    row.appendChild(tablecellC);
+    document.getElementById("author").appendChild(tablecellC);
 
 }
 
-function getCovers(key,row) {
+function getCovers(key) {
     const coverUrl = "https://covers.openlibrary.org/b/id/" + key;
     const final = coverUrl + "-M.jpg"
     const coverCell = document.createElement('td');
     const content = document.createElement('img');
+    content.setAttribute("alt", "Book cover");
     content.src = final;
     // apend the value of divelemnt to the body of html document
     coverCell.appendChild(content);
-    row.appendChild(coverCell);
+    document.getElementById("cover").appendChild(coverCell);
 
 }
 
-function checkStatus(status,row) {
+function checkStatus(status) {
     const viewableUnknown = "N/a";
     // will try and get the values for availablity from the books and insert like previous collums
     try {
@@ -237,7 +247,8 @@ function checkStatus(status,row) {
         const tablecellStatus = document.createElement('td');
         const contentStatus = document.createTextNode(Availability);
         tablecellStatus.appendChild(contentStatus);
-        row.appendChild(tablecellStatus);
+        document.getElementById("availabililty").appendChild(tablecellStatus);
+
     }
     // if a book doesn't have a value set the value to viewableUnknown, next set the value of undefined to the newly assined value of availbe to borrow so the script can still output the rest of the results
     catch (available_to_borrow_undefined) {
@@ -247,7 +258,7 @@ function checkStatus(status,row) {
             const tablecellStatus = document.createElement('td');
             const contentStatus = document.createTextNode(viewableUnknown);
             tablecellStatus.appendChild(contentStatus);
-            row.appendChild(row);
+            document.getElementById("availabililty").appendChild(tablecellStatus);
         }
     }
 
@@ -257,9 +268,8 @@ function checkStatus(status,row) {
         const viewableStatus = document.createElement('td');
         const contentViewable = document.createTextNode(viewable);
         viewableStatus.appendChild(contentViewable);
-        row.appendChild(viewableStatus);
-        document.getElementById("stock").appendChild(row);
-        addChecks(row);
+        document.getElementById("readable").appendChild(viewableStatus);
+        addChecks();
     }
     // if a book doesn't have a value set the value to viewableUnknown to stop script from not running, next set the value of undefined to the newly assined value of availbe to borrow so the script can still output the rest of the results
     catch (is_readable_undefined) {
@@ -269,10 +279,8 @@ function checkStatus(status,row) {
             const viewableStatus = document.createElement('td');
             const contentViewable = document.createTextNode(viewableUnknown);
             viewableStatus.appendChild(contentViewable);
-            row.appendChild(viewableStatus);
-            document.getElementById("stock").appendChild(viewableStatus);
-            document.getElementById("stock").appendChild(row);
-            addChecks(row);
+            document.getElementById("readable").appendChild(viewableStatus);
+            addChecks();
         }
     }
 
@@ -284,24 +292,23 @@ function checkStatus(status,row) {
 
 
 //adds checkmarks to each of the inserted books that will be used to favorite books.
-function addChecks(row) {
+function addChecks() {
     const checkCell = document.createElement('td');
     //create input that will be used to create checkbox
     var checkbox = document.createElement('input');
     //create label for input for accessabiltiy
-    var label = document.createElement('label');
+    var label = document.createElement("Label");
     //set attritutes to the input
+    label.setAttribute("for",checkCell);
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('value', 'yes');
     checkbox.setAttribute('class', 'favCheck');
     //set label to checkbox
-    label.setAttribute('for', 'favCheck');
-    label.appendChild(document.createTextNode('Favorite?'));
+    label.innerHTML = "Favorite check";
+    checkbox.appendChild(label);
     //append to table
     checkCell.appendChild(checkbox);
-    row.appendChild(checkCell)
-    //document.getElementById("stock").appendChild(checkRow);
-   //document.getElementById("favorite").appendChild(checkCell);
+    document.getElementById("favorites").appendChild(checkCell);
 }
 
 

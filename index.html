@@ -21,15 +21,17 @@
 			<a href="index.html">Homepage</a>
 			<a href="Catalog.html">Catalog</a>
 			<a href="favorates.html">Favorites</a>
-			<a href="javascript:void(0);" alt = "menu drop down" class="icon" onclick="myFunction()">Menu<i class="fa fa-bars"></i></a>
+			<a id="dropDownMenu" class="icon">Menu <i class="fa fa-bars"></i></a>
 		</div>
 
 	</header>
-	<h1>Homepage</h1>
 
-	<div class="container" role="region" aria-label="welcomeMessage" >
-		<input type = "image" src="/res/2_LIB_Gladstones_Library_JPEG_2500.jpg" alt="Image of libray">
-		<div class="welcomeText" >
+	<section>
+	<h1 aria-label="CurrentPage">Homepage</h1>
+
+	<div class="container" role="region" aria-label="welcomeMessage">
+		<img src="/res/2_LIB_Gladstones_Library_JPEG_2500.jpg" id="WelcomeImg" alt="Image of libray">
+		<div class="welcomeText">
 			<h2>Welcome</h2>
 			<a id="maincontent"></a>
 			<p>Welcome to Libernal libarators please feel free to navigate though the site via the navigation bar or use
@@ -37,53 +39,61 @@
 		</div>
 	</div>
 
-	
-	
+	</section>
 
-	<h2>About us</h2>
+	<section>
+		<h2 aria-label="About us seciton">About us</h2>
 
-	<img src="/res/old-books-arranged-on-shelf-royalty-free-image-1572384534.jpg" width="200" height="200"
-		alt="About us image with workers in backgroud" class="aboutusimage" id="aboutusimage1">
+		<img src="/res/old-books-arranged-on-shelf-royalty-free-image-1572384534.jpg" width="200" height="200"
+			alt="About us image with workers in backgroud" class="aboutusimage" id="aboutusimage1">
 
-	<p class="aboutUsText" role="main" aria-label="mainContent"> Welcome to Libernal libarators, we are the one stop in all your reading needs. Select from
-		hundrads of books in our deep libary of books. not sure what to look for check out our subjects section within
-		our <a href="Catalog.html">catalog</a>
-		to get a taste of the books we offer in our collection. We have been providing books to our customers since 2021
-		and are proud with our huge collection, not
-		happy with your results please feel free to contact us via the details below and we will try to responde and
-		cater to your needs as best as possiable </p>
+		<p class="aboutUsText" role="main" aria-label="mainContent"> Welcome to Libernal libarators, we are the one stop
+			in all your reading needs. Select from
+			hundrads of books in our deep libary of books. not sure what to look for check out our subjects section
+			within
+			our <a href="Catalog.html">catalog</a>
+			to get a taste of the books we offer in our collection. We have been providing books to our customers since
+			2021
+			and are proud with our huge collection, not
+			happy with your results please feel free to contact us via the details below and we will try to responde and
+			cater to your needs as best as possiable </p>
 
-	<img src="/res/startup-g441f2006a_1920.jpg" width="500" height="500" alt="About us image with workers in backgroud"
-		class="aboutusimage" id="aboutusimage2">
+		<img src="/res/startup-g441f2006a_1920.jpg" width="500" height="500"
+			alt="About us image with workers in backgroud" class="aboutusimage" id="aboutusimage2">
+	</section>
 
-	<h2>Frequently asked questions</h2>
+	<section>
+		<h2 aria-label="FAQ">Frequently asked questions</h2>
 
-	<h3>what subjects do you stock?</h3>
-	<ul>
-		<li>Fiction</li>
-		<li>Programming</li>
-		<li>horror</li>
-	</ul>
 
-	<h3>Where can we find your collection?</h3>
 
-	<p>simpley head to our <a href="Catalog.html">catalog</a> page</p>
+		<h3 aria-label="stock">what subjects do you stock?</h3>
+		<ul>
+			<li>Fiction</li>
+			<li>Programming</li>
+			<li>horror</li>
+		</ul>
 
-	<h3>Im not sure if you have a book a want how do I check?</h3>
+		<h3 aria-label="About collection">Where can we find your collection?</h3>
 
-	<p>Either check our stock on the catalog page by search for the title you are looking for contact us for enquirers
-	</p>
+		<p>simpley head to our <a href="Catalog.html">catalog</a> page</p>
 
-	<h3>How can I get in touch?</h3>
+		<h3>Im not sure if you have a book a want how do I check?</h3>
 
-	<p>You can contact us via..</p>
+		<p>Either check our stock on the catalog page by search for the title you are looking for contact us for
+			enquirers
+		</p>
 
-	<ul>
-		<li>Our phone on 07945798239</li>
-		<li>Our email at LibernalLibarators@email.com</li>
-	</ul>
+		<h3>How can I get in touch?</h3>
 
-	<h3>Contact us</h3>
+		<p>You can contact us via..</p>
+
+		<ul>
+			<li>Our phone on 07945798239</li>
+			<li>Our email at LibernalLibarators@email.com</li>
+		</ul>
+
+		<h3>Contact us</h3>
 
 		<form aria-label="Contact us">
 
@@ -107,12 +117,14 @@
 
 		</form>
 
-		<footer>
-			<p> All copyright is held by there respective owners</p>
-			<p> For any querys regarding the avabillity of stock please contact us via our contact page</p>
-			<a href="#skiptohome">Skip to home</a>
-			<a href="#maincontent">Skip to main content</a>
-		</footer>
+	</section>
+
+	<footer>
+		<p> All copyright is held by there respective owners</p>
+		<p> For any querys regarding the avabillity of stock please contact us via our contact page</p>
+		<a href="#skiptohome">Skip to home</a>
+		<a href="#maincontent">Skip to main content</a>
+	</footer>
 	<script src="/js/navFunction.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/js/FilterTableJ.js"></script>
