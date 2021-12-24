@@ -4,7 +4,7 @@ header {
 
 body {
   font-size: 100%;
-  display: inline-block;
+
   line-height: 26px;
   background-color: #ffffffa6;
   background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
@@ -17,6 +17,14 @@ a {
 
 a:visited {
   color: rgb(0, 0, 0);
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+a:link {
+  font-weight: 700;
 }
 
 h1 {
@@ -55,8 +63,9 @@ h1 {
 }
 
 /*change background of the links when hovering over a link */
-.topnav a:hover:not(.active) {
+.topnav a:hover{
   background-color: rgba(245, 149, 24, 0.555);
+  color: #252525;
 }
 
 #logo {
@@ -66,18 +75,26 @@ h1 {
   width: 15%;
 }
 
-table{
+table {
   table-layout: auto;
   width: auto;
-  overflow-x:auto;
-  display: table;
+  overflow-x: auto;
+  max-width:100vw;
+  display: block;
 
 }
+
+
 
 th, td {
   text-align: left;
   padding: 8px;
-  
+
+}
+
+#WelcomeImg{
+  width: 100%;
+
 }
 
 /*used to style to div navation bar */
@@ -100,72 +117,72 @@ footer {
   text-decoration: none;
 }
 
-#aboutusimage1{
-    float: right;    
-    margin: 0 0 0 15px;
-    
+#aboutusimage1 {
+  float: right;
+  margin: 0 0 0 15px;
+
 }
 
-#aboutusimage2{
-  float: left;    
-  margin:0 15px 0 0;
-  
+#aboutusimage2 {
+  float: left;
+  margin: 0 15px 0 0;
+
 }
 
-#fictionElement{
+#fictionElement {
   width: 10%;
   height: 10%;
 
 
 }
 
-#fictionImg{
+#fictionImg {
   width: 300%;
   height: 100%;
 
 }
 
-#search{
+#search {
   float: right;
 }
 
 
 
-#newAjexSearch{
+#newAjexSearch {
   float: right;
 }
 
-#newAjexSearchSubmit{
+#newAjexSearchSubmit {
   float: right;
 }
 
-#programmingElement{
+#programmingElement {
   width: 10%;
   height: 10%;
 
 }
 
-#tableLable{
+#tableLable {
   visibility: hidden;
 }
 
-#programmingImg{
+#programmingImg {
   width: 300%;
   height: 100%;
 }
 
-#horrorElement{
+#horrorElement {
   width: 10%;
   height: 10%;
 
 }
 
-#horrorImg{
+#horrorImg {
   width: 300%;
   height: 100%;
 }
 
-#refreshbutton{
+#refreshbutton {
   height: 50px;
   width: 50px;
   float: right;
@@ -177,13 +194,12 @@ footer {
   float: right;
 }
 
-#altText{
+#altText {
   visibility: hidden;
 }
 
 .refreshtip .tooltiptext {
   visibility: hidden;
-  width: 77px;
   background-color: black;
   color: #fff;
   text-align: center;
@@ -195,11 +211,13 @@ footer {
 
 .refreshtip:hover .tooltiptext {
   visibility: visible;
-  width: 120px;
   top: 100%;
   left: 50%;
   margin-left: -60px;
 }
+
+
+
 
 
 /*Hidden class for adding and removing*/
@@ -214,7 +232,7 @@ footer {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0,0,0,.8);
+  background: rgba(0, 0, 0, .8);
   z-index: 999;
   opacity: 1;
   transition: all 0.5s;
@@ -226,6 +244,7 @@ footer {
   width: 80px;
   height: 80px;
 }
+
 .lds-dual-ring:after {
   content: " ";
   display: block;
@@ -237,12 +256,14 @@ footer {
   border-color: #fff transparent #fff transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
+
 @keyframes lds-dual-ring {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
+
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -251,38 +272,51 @@ footer {
   .topnav a:not(:first-child) {
     display: none;
   }
+
+  #logo{width: 50%;}
+
   .topnav {
     background-color: rgba(51, 51, 51, 0.219);
   }
+
   .topnav a.icon {
     float: right;
     display: block;
   }
+
   .welcomeText {
     position: absolute;
     bottom: 0px;
     right: auto;
     color: rgb(255, 255, 255);
   }
+
+
+
   .topnav.responsive {
     position: relative;
   }
+
   .topnav.responsive a.icon {
     position: absolute;
     right: 0;
     top: 0;
   }
+
   .topnav.responsive a {
     float: none;
     display: block;
     text-align: left;
   }
+
   table {
     width: 100%;
     display: inline-block;
+    border-collapse: collapse;
+
   }
 
-  
+
 
   body {
     font-size: 100%;
@@ -306,51 +340,51 @@ footer {
     white-space: nowrap;
   }
 
-  .aboutusimage{
+  .aboutusimage {
     width: 50%;
     height: 50%;
   }
 
-  #fictionElement{
+  #fictionElement {
     width: 25%;
     height: 10%;
-  
-  
+
+
   }
-  
-  #fictionImg{
+
+  #fictionImg {
     width: 300%;
     height: 100%;
-  
+
   }
-  
-  #search{
+
+  #search {
     display: inline;
     padding-left: 2%;
     padding-bottom: 2%;
   }
-  
-  #programmingElement{
+
+  #programmingElement {
     width: 25%;
     height: 10%;
-  
+
   }
-  
-  #programmingImg{
+
+  #programmingImg {
     width: 300%;
     height: 100%;
   }
-  
-  #horrorElement{
+
+  #horrorElement {
     width: 15%;
     height: 10%;
-  
+
   }
-  
-  #horrorImg{
+
+  #horrorImg {
     width: 300%;
     height: 100%;
   }
-  
+
 
 }
